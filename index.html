@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="shortcut icon" href="img/weather-191-461610.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+  <title>Weather Application</title>
+</head>
+
+<body>
+  <article class="container m-5 pb-5 ps-3 pe-3">
+    <div class="input-group p-5">
+      <input type="text" aria-label="First name" class="input-lat form-control" placeholder="Latitude">
+      <input type="text" aria-label="Last name" class="input-lon form-control"  placeholder="Longitude">
+      <button class="btn btn-change" type="button"  onclick="userAction()" ><i class="bi bi-geo-alt-fill"></i> Change Location</button>
+    </div>
+    <div class="contain d-flex">
+      <div class="current-location">
+        <h3>Thứ</h3>
+        <p>Ngày</p>
+        <p>địa điểm</p>
+        <h1 class="mt-5">&ordm;C </h1>
+        <p>State</p>
+      </div>
+      <div class="time-zone">
+        <div>
+          <div class="d-flex justify-content-between text-uppercase">
+            <p class="">preciptation</p>
+            <p><span>0</span>%</p>
+          </div>
+          <div class="d-flex justify-content-between text-uppercase">
+            <p>humidity</p>
+            <p><span>34</span>%</p>
+          </div>
+          <div class="d-flex justify-content-between text-uppercase">
+            <p>wind</p>
+            <p><span>0</span>km/h</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-evenly">
+          <div class="text-center">
+            <img src="img/wd.png" alt="">
+            <p>Tue</p>
+            <p>nhiet do</p>
+          </div>
+          <div class="text-center">
+            <img src="img/wd1.png" alt="">
+            <p>Tue</p>
+            <p>nhiet do</p>
+          </div>
+          <div class="text-center">
+            <img src="img/wd2.png" alt="">
+            <p>Tue</p>
+            <p>nhiet do</p>
+          </div>
+          <div class="text-center">
+            <img src="img/weather-191-461610.png" alt="">
+            <p>Tue</p>
+            <p>nhiet do</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
