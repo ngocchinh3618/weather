@@ -1,59 +1,99 @@
-body{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: white;
-}
-.container{
-  background-color: #7f5a83;
-  background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
-  border-radius: 12px;
-}
-.btn-change{
-  color: white;
-  background-color: #05e8ba;
-  background-image: linear-gradient(315deg, #05e8ba 0%, #087ee1 74%);
-  
-}
-.contain{
-  width: 100%;
-  background-color: rgb(27, 37, 37);
-  border-radius: 20px;
-}
-.current-location{
-  padding: 12px;
-  width: 40%;
-  border-radius: 20px;
-  background-image: url("./img/bg.jpg");
-  background-size: 100% 120%;
-  background-repeat: no-repeat;
-}
-.time-zone{
-  width: 60%;
-  padding: 12px;
-}
-.text-center >img{
-  width: 50px;
-  border-radius: 12px; 
-}
-.form-control:focus{
-  box-shadow: none; 
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
 }
 
+.container {
+    background-color: #7f5a83;
+    background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+    border-radius: 12px;
+    padding: 2% 4% 6%;
+    margin-top: 100px;
+    width: 70%;
+}
+
+.btn-change {
+    color: white;
+    background-color: #05e8ba;
+    background-image: linear-gradient(315deg, #05e8ba 0%, #087ee1 74%);
+}
+
+.contain {
+    width: 100%;
+    background-color: rgb(27, 37, 37);
+    border-radius: 20px;
+}
+
+.current-location {
+    padding: 12px;
+    width: 40%;
+    border-radius: 20px;
+    background-image: url("./img/bg.jpg");
+    background-size: 100% 120%;
+    background-repeat: no-repeat;
+}
+
+.time-zone {
+    width: 60%;
+    padding: 12px;
+}
+
+.text-center>img {
+    width: 50px;
+    border-radius: 12px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+
+/* Map */
+
+#map {
+    height: 100%;
+}
+
+
+/* ~Map */
+
+
+/* Modal */
+
+.modal-dialog {
+    max-width: 64%;
+    max-height: 100%;
+    margin: 144px auto;
+}
+
+.modal-content {
+    /* background-color: #7f5a83;
+    background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%); */
+    height: 620px;
+}
+
+
+/* ~Modal */
+
 @media only screen and (max-width: 600px) {
-  body {
-    background-color: lightblue;
-  }
-  .contain{
-    display: block !important;
-  }
-.current-location{
-  display: block;
-  width: 100%;
-  padding: 20px;
-}
-.time-zone{
-  display: block;
-  width: 100%;
-}
+    body {
+        background-color: lightblue;
+    }
+    .container {
+        max-width: 90%;
+    }
+    .contain {
+        display: block !important;
+    }
+    .current-location {
+        display: block;
+        width: 100%;
+        padding: 20px;
+    }
+    .time-zone {
+        display: block;
+        width: 100%;
+    }
 }

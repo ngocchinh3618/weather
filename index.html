@@ -2,78 +2,113 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="shortcut icon" href="img/weather-191-461610.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="index.js"></script>
-  <title>Weather Application</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/weather-191-461610.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Weather Application</title>
 </head>
 
 <body>
-  <article class="container m-5 pb-5 ps-3 pe-3">
-    <div class="input-group p-5">
-      <input type="text" aria-label="First name" class="input-lat form-control" placeholder="Latitude">
-      <input type="text" aria-label="Last name" class="input-lon form-control"  placeholder="Longitude">
-      <button class="btn btn-change" type="button"  onclick="userAction()" ><i class="bi bi-geo-alt-fill"></i> Change Location</button>
-    </div>
-    <div class="contain d-flex">
-      <div class="current-location">
-        <h3>Thứ</h3>
-        <p>Ngày</p>
-        <p>địa điểm</p>
-        <h1 class="mt-5">&ordm;C </h1>
-        <p>State</p>
-      </div>
-      <div class="time-zone">
-        <div>
-          <div class="d-flex justify-content-between text-uppercase">
-            <p class="">preciptation</p>
-            <p><span>0</span>%</p>
-          </div>
-          <div class="d-flex justify-content-between text-uppercase">
-            <p>humidity</p>
-            <p><span>34</span>%</p>
-          </div>
-          <div class="d-flex justify-content-between text-uppercase">
-            <p>wind</p>
-            <p><span>0</span>km/h</p>
-          </div>
+    <article class="container">
+        <div class="input-group p-5">
+            <input id="iLat" type="text" aria-label="First name" class="input-lat form-control" placeholder="Latitude">
+            <input id="iLon" type="text" aria-label="Last name" class="input-lon form-control" placeholder="Longitude">
+            <button class="btn btn-change" type="button" onclick="getCurrentLocation()"><i class="bi bi-geo-alt-fill"></i> Current
+      Location</button>
+            <button class="btn btn-change" type="button" onclick="changeLocation()"><i class="bi bi-geo-alt-fill"></i> Change
+        Location</button>
         </div>
-        <div class="d-flex justify-content-evenly">
-          <div class="text-center">
-            <img src="img/wd.png" alt="">
-            <p>Tue</p>
-            <p>nhiet do</p>
-          </div>
-          <div class="text-center">
-            <img src="img/wd1.png" alt="">
-            <p>Tue</p>
-            <p>nhiet do</p>
-          </div>
-          <div class="text-center">
-            <img src="img/wd2.png" alt="">
-            <p>Tue</p>
-            <p>nhiet do</p>
-          </div>
-          <div class="text-center">
-            <img src="img/weather-191-461610.png" alt="">
-            <p>Tue</p>
-            <p>nhiet do</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
+        <!-- Modal -->
+        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="" id="map">map</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+        <div class="contain d-flex">
+            <div class="current-location">
+                <div class="p-5">
+                    <div>
+                        <h3 id="dow"></h3>
+                    </div>
+                    <div>
+                        <p id="day"></p>
+                    </div>
+                    <div>
+                        <p id="city"></p>
+                    </div>
+                    <div>
+                        <p id="time-zone"></p>
+
+                    </div>
+                </div>
+
+                <div class="mt-5 ms-5">
+                    <h1 style="padding-top: 20px;"><span id="temp"></span> &ordm;C </h1>
+                    <p> State </p>
+                </div>
+
+            </div>
+            <div class="time-zone">
+                <div class=" p-5">
+                    <div class="d-flex justify-content-between">
+                        <p class="text-uppercase">preciptation</p>
+                        <p><span id="preciptation"></span> mm</p>
+                    </div>
+                    <div class="d-flex justify-content-between text-uppercase">
+                        <p>humidity</p>
+                        <p><span id="humidity"></span> %</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="text-uppercase">wind</p>
+                        <p><span id="wind"></span> km/h</p>
+                    </div>
+                </div>
+                <div class="d-flex mt-5 justify-content-evenly">
+                    <div class="text-center">
+                        <img src="img/wd.png" alt="">
+                        <p id="item1"></p>
+                        <p><span id="temp1"></span> &ordm;C </p>
+                    </div>
+                    <div class="text-center">
+                        <img src="img/wd1.png" alt="">
+                        <p id="item2"></p>
+                        <p><span id="temp2"></span> &ordm;C </p>
+                    </div>
+                    <div class="text-center">
+                        <img src="img/wd2.png" alt="">
+                        <p id="item3"></p>
+                        <p><span id="temp3"></span> &ordm;C </p>
+                    </div>
+                    <div class="text-center">
+                        <img src="img/weather-191-461610.png" alt="">
+                        <p id="item4"></p>
+                        <p><span id="temp4"></span> &ordm;C </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
