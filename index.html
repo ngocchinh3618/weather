@@ -24,28 +24,10 @@
             <button class="btn btn-change" type="button" onclick="changeLocation()"><i class="bi bi-geo-alt-fill"></i> Change
         Location</button>
         </div>
-        <!-- Modal -->
-        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="" id="map">map</div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
         <div class="contain d-flex">
-            <div class="current-location">
-                <div class="p-5">
+            <div class="current-location__detail">
+                <div class="current-location__detail__box p-4">
                     <div>
                         <h3 id="dow"></h3>
                     </div>
@@ -61,14 +43,14 @@
                     </div>
                 </div>
 
-                <div class="mt-5 ms-5">
-                    <h1 style="padding-top: 20px;"><span id="temp"></span> &ordm;C </h1>
+                <div class="mt-4 ms-4">
+                    <h1><span id="temp"></span>&ordm;C </h1>
                     <p> State </p>
                 </div>
 
             </div>
-            <div class="time-zone">
-                <div class=" p-5">
+            <div class="current-location">
+                <div class="specification p-4">
                     <div class="d-flex justify-content-between">
                         <p class="text-uppercase">preciptation</p>
                         <p><span id="preciptation"></span> mm</p>
@@ -82,26 +64,26 @@
                         <p><span id="wind"></span> km/h</p>
                     </div>
                 </div>
-                <div class="d-flex mt-5 justify-content-evenly">
+                <div class="d-flex mt-1 justify-content-evenly pt-5">
                     <div class="text-center">
-                        <img src="img/wd.png" alt="">
+                        <img src="img/cloudy_sun1.gif" alt="">
                         <p id="item1"></p>
-                        <p><span id="temp1"></span> &ordm;C </p>
+                        <p><span id="temp1"></span>&ordm;C </p>
                     </div>
                     <div class="text-center">
-                        <img src="img/wd1.png" alt="">
+                        <img src="img/cloudy.gif" alt="">
                         <p id="item2"></p>
-                        <p><span id="temp2"></span> &ordm;C </p>
+                        <p><span id="temp2"></span>&ordm;C </p>
                     </div>
                     <div class="text-center">
-                        <img src="img/wd2.png" alt="">
+                        <img src="img/rain.gif" alt="">
                         <p id="item3"></p>
-                        <p><span id="temp3"></span> &ordm;C </p>
+                        <p><span id="temp3"></span>&ordm;C </p>
                     </div>
                     <div class="text-center">
-                        <img src="img/weather-191-461610.png" alt="">
+                        <img src="img/rain1.gif" alt="">
                         <p id="item4"></p>
-                        <p><span id="temp4"></span> &ordm;C </p>
+                        <p><span id="temp4"></span>&ordm;C </p>
                     </div>
                 </div>
             </div>
