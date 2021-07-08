@@ -2,18 +2,22 @@ let day = document.getElementById("day");
 let city = document.getElementById("city");
 let wind = document.getElementById("wind");
 let tempp = document.getElementById("temp");
+let timezone = document.getElementById("time-zone")
 let humidity = document.getElementById("humidity");
 let preciptation = document.getElementById("preciptation");
 
 const userAction = async (lat, lon) => {
   const getAPILocation =  await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=4ad98682883ede3d088095d90aaf6a65`);
   const getAPILocationJson =  await getAPILocation.json();
-  // console.log('result',getAPILocation, getAPILocationJson)
+  console.log('result',getAPILocation, getAPILocationJson)
   const getAPIName = await fetch(`http://api.openweathermap.org/data/2.5/forecast?id=524901&q=${getAPILocationJson.name}&appid=4ad98682883ede3d088095d90aaf6a65`);
   const getAPINameJson = await getAPIName.json();
-  console.log(getAPINameJson)
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  document.getElementById("time-zone").innerHTML = "Time Zone: " + timezone;
+  // console.log(getAPINameJson)
+  // get current timezone 
+  // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // document.getElementById("time-zone").innerHTML = "Time Zone: " + timezone;
+  let country = getAPINameJson.city.country;
+  timezone.innerHTML= (moment.tz.zonesForCountry(country, true)[0].name);
   day.innerHTML= (getAPINameJson.list[0].dt_txt).split(' ')[0];
   city.innerHTML= getAPINameJson.city.name;
   humidity.innerHTML= getAPINameJson.list[0].wind.speed;
@@ -45,9 +49,7 @@ const userAction = async (lat, lon) => {
     }
   }
 }
-function setE(id, value) {
-  document.getElementById(id).innerHtml = value;
-}
+
 function getCurrentLocation(){
   navigator.geolocation.getCurrentPosition((pos)=> {
     var crd = pos.coords;
@@ -59,11 +61,13 @@ function getCurrentLocation(){
 function changeLocation(){
   let iLatitude = document.getElementById("iLat").value; 
   let longitude = document.getElementById("iLon").value;
-  if(iLatitude == undefined || longitude == undefined ){
-    userAction()
+  if(iLatitude != undefined && longitude !=undefined && iLatitude != "" && longitude!=""){
+    let data = {long: iLatitude, lat: longitude};
+    window.localStorage.setItem("location", JSON.stringify(data));
+    userAction(iLatitude,longitude);
   }
   else{
-    userAction(iLatitude,longitude);
+    getCurrentLocation();
   }
 }
 
@@ -100,15 +104,35 @@ let temperature = (temp, tag)=>{
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  const position = JSON.parse(window.localStorage.getItem('location'));
-  console.log(position)
-  if(!position.long|| !position.lat){
-
-  }else{
-    userAction(position.lat,position.long);
+  let varlocal = window.localStorage.getItem('location');
+  if (varlocal !== null) {
+    // console.log(varlocal); 
+    const position = JSON.parse(varlocal);
+    if(!position.long || !position.lat){
+    }else{
+      userAction(position.lat,position.long);
+    }
   }
-  
+  else{
+    getCurrentLocation();
+  }
+
+  setInterval(()=>{
+    navigator.geolocation.getCurrentPosition((pos)=> {
+      let crd = pos.coords;
+      let data = {long: crd.longitude, lat: crd.latitude};
+      window.localStorage.setItem("location", JSON.stringify(data));
+    }, (err)=>{
+      alert("An error happened!!! " + err.message);
+    })
+  }, 1800000);
 });
+
+
+
+
+
+ 
 
 // call a rest web service api
 // https://stackoverflow.com/questions/36975619/how-to-call-a-rest-web-service-api-from-javascript
